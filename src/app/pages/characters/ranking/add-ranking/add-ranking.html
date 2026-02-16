@@ -1,0 +1,45 @@
+<form [formGroup]="addRankingForm"
+    (ngSubmit)="$event.preventDefault(); createRanking();"
+    >
+    <div class="mb-3 mt-3">
+        <label class="form-label">Image url: </label>
+        <input class="form-control" formControlName="rankImgUrl" type="text" required>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Story: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="rankingTypes"
+            (newType)="selectType($event, 'story')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Boss: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="rankingTypes"
+            (newType)="selectType($event, 'boss')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">PvP: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="rankingTypes"
+            (newType)="selectType($event, 'pvp')"
+        >
+        </btn-group>
+    </div>
+    <button class="btn btn-primary" [disabled]="addRankingForm.invalid">
+        Create
+    </button>
+
+</form>

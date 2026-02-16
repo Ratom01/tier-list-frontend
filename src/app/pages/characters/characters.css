@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+}
+.btn{
+    padding: 0.5em;
+}
+.btn-group, select{
+    padding: 0.5em;
+}
+/* .card:hover {
+  transform: scale(1.05);
+} */
+.character-card {
+  height: 200px;
+  width: 140px;
+  background-color: rgba(255, 195, 31, 0.76);
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  transition: transform 0.3s ease;  /* visszaanimál */
+}
+
+.character-card:hover .image-container img {
+  transform: scale(1.1);            /* kép is nagyít */
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.0);
+  color: white;
+  padding: 0.3em;
+}
+@keyframes background {
+  from {background-color: rgba(0,0,0,0.0);}
+  to {background-color: rgba(0,0,0,0.6)}
+}
+.character-card:hover .overlay{
+   animation-name: background;
+   animation-fill-mode: both;
+   animation-duration: 0.3s;
+}
+
+.character-card:hover .overlay {
+  opacity: 1;                        /* overlay feljön */
+}
+.icon-container {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  position: absolute;
+  z-index: 5;
+}
+.icon-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  position: absolute;
+  z-index: 5;
+}
+.burst{
+    top: 5px;
+    left: 5px;
+}
+.element{
+    top: 35px;
+    left: 5px;
+}

@@ -1,0 +1,81 @@
+<div #background class="background d-flex flex-column gap-3" *ngIf="character !== null"
+    [style.left.px]="left"
+    [style.top.px]="top"
+    
+    >
+    <div class="head">
+        {{character.name}}
+    </div>
+    <div class="details d-flex justify-content-center gap-5">
+        <div class="element">
+            <ng-container *ngFor="let type of elementTypes">
+                <ng-container *ngIf="type[0] === character.elementType">
+                    <img src="{{type[1]}}">
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="rifle">
+            <ng-container *ngFor="let type of rifleTypes">
+                <ng-container *ngIf="type[0] === character.rifleType">
+                    <img src="{{type[1]}}">
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="manufacturer">
+            <ng-container *ngFor="let type of manufacturerTypes">
+                <ng-container *ngIf="type[0] === character.manufacturerType">
+                    <img src="{{type[1]}}">
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="burst">
+            <ng-container *ngFor="let type of burstTypes">
+                <ng-container *ngIf="type[0] === character.burstType">
+                    <img src="{{type[1]}}">
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div class="ratings d-flex justify-content-center gap-5">
+        <div class="d-flex flex-column">
+            <ng-container *ngFor="let type of rankType">
+                <div class="rating" *ngIf="type[0] === ranking?.story"
+                    [style.background-color]="type[1][1]"
+                >
+                    {{ranking?.story}}
+                </div>
+            </ng-container>
+            
+            <div class="rating-name">
+                Story
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <ng-container *ngFor="let type of rankType">
+                <div class="rating" *ngIf="type[0] === ranking?.boss"
+                    [style.background-color]="type[1][1]"
+                >
+                    {{ranking?.boss}}
+                </div>
+            </ng-container>
+            <div class="rating-name">
+                Boss
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <ng-container *ngFor="let type of rankType">
+                <div class="rating" *ngIf="type[0] === ranking?.pvp"
+                    [style.background-color]="type[1][1]"
+                >
+                    {{ranking?.pvp}}
+                </div>
+            </ng-container>
+            <div class="rating-name">
+                PvP
+            </div>
+        </div>
+    </div>
+</div>

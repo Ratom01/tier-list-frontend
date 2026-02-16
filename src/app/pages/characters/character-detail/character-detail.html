@@ -1,0 +1,172 @@
+<h1>{{character?.name}}</h1>
+<h3>Information and Guide</h3>
+<h2>Introduction</h2>
+<p>{{character?.name}} is a {{character?.rarityType}} rarity {{character?.burstType}} character from the {{character?.attackType}} class, who wields a {{character?.rifleType}} weapon and belongs to the {{character?.elementType}} element.
+    She's part of the {{character?.manufacturerType}} faction.
+    To learn more about {{character?.name}} check the sections below. Use the tabs to quickly switch to the kind of information you're looking for.
+</p>
+<div>
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+</div>  
+<div class="d-flex" style="gap: 1em; margin: 0.5em;">
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="selectedDiv = 'profile-div';">
+        Profile
+    </div>
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="selectedDiv = 'review-div';">
+        Review
+    </div>
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="selectedDiv = 'investment-div';">
+        Investment
+    </div>
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="selectedDiv = 'team-div';">
+        Team
+    </div>
+</div>
+<div>
+  <ng-container *ngIf="selectedDiv === 'profile-div'">
+    <div class="d-flex align-items-stretch justify-content-center">
+        <div class="skill flex-column" *ngFor="let skill of skills;" style="width: 50%; margin: 0.5em;">
+          <div class="d-flex align-items-stretch">
+            <div class="d-flex fw-bold align-items-center justify-content-center" style="background-color: orange; padding: 0.5em;">
+              {{skill.type}}
+            </div>
+            <div class="fw-bold" style="padding: 0.5em;">
+              {{skill.name}}
+              <br>
+              <span *ngIf="skill.active" class="fw-normal">
+                Active
+              </span>
+              <span *ngIf="!skill.active" class="fw-normal">
+                Passive
+              </span>
+            </div>
+          </div>
+          <div class="d-flex" style="padding: 0.5em;" *ngIf="skill.type === 'NORMAL'">
+            <div style="flex: 1;">
+              Mode: Normal
+            </div>
+            <div style="flex: 1;">
+              Ammo: {{skill.ammo}}
+            </div>
+            <div style="flex: 1;">
+              Reload: {{skill.reloadTime}} s
+            </div>
+          </div>
+          <div class="d-flex" style="padding: 0.5em;" *ngIf="skill.type !== 'NORMAL'">
+            <div style="flex: 1;">
+              Cooldown: {{skill.cooldown}} s
+            </div>
+          </div>
+          <div class="d-flex" style="padding: 0.5em;">
+            {{skill.description}}
+          </div>
+          <button class="btn btn-primary" (click)="navigate('/skill/'+skill.id+'/character/'+character?.id+'/update')" style="margin: 0.5em;">Update</button>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary"
+          (click)="navigate(`skill/character/${character?.id}/add`)"
+        >
+          ADD SKILL
+        </button>
+      </div>
+    </ng-container>
+    <div
+      *ngIf="selectedDiv === 'review-div'"
+    >
+      <ng-container *ngIf="ranking">
+        <div class="ratings d-flex justify-content-center gap-5">
+          <div class="d-flex flex-column">
+              <ng-container *ngFor="let type of rankType">
+                  <div class="rating" *ngIf="type[0] === ranking?.story"
+                      [style.background-color]="type[1][1]"
+                  >
+                      {{ranking?.story}}
+                  </div>
+              </ng-container>
+              
+              <div class="rating-name">
+                  Story
+              </div>
+          </div>
+          <div class="d-flex flex-column">
+              <ng-container *ngFor="let type of rankType">
+                  <div class="rating" *ngIf="type[0] === ranking?.boss"
+                      [style.background-color]="type[1][1]"
+                  >
+                      {{ranking?.boss}}
+                  </div>
+              </ng-container>
+              <div class="rating-name">
+                  Boss
+              </div>
+          </div>
+          <div class="d-flex flex-column">
+              <ng-container *ngFor="let type of rankType">
+                  <div class="rating" *ngIf="type[0] === ranking?.pvp"
+                      [style.background-color]="type[1][1]"
+                  >
+                      {{ranking?.pvp}}
+                  </div>
+              </ng-container>
+              <div class="rating-name">
+                  PvP
+              </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!ranking">
+        <button class="btn btn-primary"
+          (click)="navigate(`/characters/${character?.id}/ranking/add`);"
+        >
+          ADD RANKING
+        </button>
+      </ng-container>
+      
+    </div>
+    <div
+    *ngIf="selectedDiv === 'investment-div'"
+    >
+        investment
+    </div>
+    <div
+    *ngIf="selectedDiv === 'team-div'"
+    >
+        team
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Delete {{character?.name}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure to delete this character?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-dismiss="modal">No</button>
+        <button class="btn btn-danger" data-bs-dismiss="modal"
+        (click)="deleteCharacter(character?.id)"
+        >Yes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

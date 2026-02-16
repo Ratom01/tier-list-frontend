@@ -1,0 +1,24 @@
+.row{
+    display: flex;
+    flex-direction: row;
+}
+mini-character-card {
+    padding: 0;
+}
+td{
+    border: 1px solid rgb(0, 0, 0);
+}
+.rank-head{
+    width: 5%;
+}
+.attacktype-head{
+    width: 30%;
+}
+.rank{
+    text-align: center;
+    color: white;
+}
+.cell{
+    display: flex;
+    padding: 0.3em;
+}

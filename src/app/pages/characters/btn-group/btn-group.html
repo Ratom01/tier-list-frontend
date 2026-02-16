@@ -1,0 +1,25 @@
+<div class="btn-group" style="flex: 1;">
+    <button *ngIf="isAll" type="button" class="btn btn-primary"
+            (click)="onClick(null);"
+            [class.selected]="selectedType === null"
+            >
+            ALL
+        </button>
+    <ng-container *ngIf="isIcon">
+        <button *ngFor="let type of types;"
+            type="button" class="btn btn-primary"
+            [class.selected]="selectedType === type[0]"
+            (click)="onClick(type[0]);"
+        >
+            <img src={{type[1][1]}}>
+        </button>
+    </ng-container >
+    <ng-container *ngIf="!isIcon">
+        <button *ngFor="let type of types" type="button" class="btn btn-primary"
+            [class.selected]="selectedType === type[0]"
+            (click)="onClick(type[0]);"
+            >
+            {{type[1][0]}}
+        </button>
+    </ng-container >
+</div>

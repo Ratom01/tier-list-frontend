@@ -1,0 +1,89 @@
+<form [formGroup]="addCharacterForm"
+    (ngSubmit)="$event.preventDefault(); createCharacter();"
+    >
+
+    <div class="mb-3 mt-3">
+        <label class="form-label">Character name: </label>
+        <input class="form-control" formControlName="name" type="text" required>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Image url: </label>
+        <input class="form-control" formControlName="imgUrl" type="text" required>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Burst: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="burstTypes"
+            (newType)="selectType($event, 'burstType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Element: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="true"
+            [types]="elementTypes"
+            (newType)="selectType($event, 'elementType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Attack type: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="attackTypes"
+            (newType)="selectType($event, 'attackType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Manufacturer: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="manufacturerTypes"
+            (newType)="selectType($event, 'manufacturerType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Rarity: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="rarityTypes"
+            (newType)="selectType($event, 'rarityType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Rifle: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="true"
+            [types]="rifleTypes"
+            (newType)="selectType($event, 'rifleType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Description: </label>
+        <textarea class="form-control" formControlName="description" type="text" required>
+
+        </textarea>
+    </div>
+    <button class="btn btn-primary" [disabled]="addCharacterForm.invalid">
+        Create
+    </button>
+
+</form>

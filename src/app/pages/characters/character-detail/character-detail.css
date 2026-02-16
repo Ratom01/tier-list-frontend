@@ -1,0 +1,33 @@
+.hidden{
+    display: none;
+}
+.flex-item{
+    text-align: center;
+    padding: 0.5em;
+    background-color: gray;
+    border: 1px solid white;
+    box-shadow: white 0 0 1px;
+    cursor: pointer;
+}
+.skill{
+    border: 1px solid white;
+}
+.rating{
+    border: black solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    width: 200px;
+    height: 70px;
+    padding: 3px;
+    color: white;
+}
+.rating-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    width: 200px;
+    height: 50px;
+}

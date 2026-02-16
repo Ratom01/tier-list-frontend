@@ -1,0 +1,55 @@
+<form 
+    [formGroup]="addSkillForm"
+    (submit)="addSkill()"
+>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Skill name: </label>
+        <input class="form-control" formControlName="name" type="text"  required>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Type name: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="skillTypes"
+            (newType)="selectType($event, 'type')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Active: </label>
+        <select class="form-control" formControlName="active" required>
+            <option value=true>Active</option>
+            <option value=false>Passive</option>
+        </select>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Description: </label>
+        <textarea rows="10" class="form-control" formControlName="description" type="text" >
+
+        </textarea>
+    </div>
+    <div
+    [class.hidden]="!normal">
+        <div class="mb-3 mt-3">
+            <label class="form-label">Ammo: </label>
+            <input class="form-control" formControlName="ammo" type="number">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Reload Time: </label>
+            <input class="form-control" formControlName="reloadTime" type="number">
+        </div>
+    </div>
+    <div
+    [class.hidden]="normal">
+        <div class="mb-3 mt-3">
+            <label class="form-label">Cooldown: </label>
+            <input class="form-control" formControlName="cooldown" type="number">
+        </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="addSkillForm.invalid">
+        Create
+    </button>
+
+</form>

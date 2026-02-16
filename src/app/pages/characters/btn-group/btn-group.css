@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+}
+.btn{
+    padding: 0.5em;
+    white-space: nowrap;
+}
+.btn-group, select{
+    padding: 0.5em;
+}
+.selected {
+    color:aqua;
+    background-color: darkgray;
+}
+img {
+    max-width: 45px;
+    height: 25px;
+    padding: auto;
+}

@@ -1,0 +1,9 @@
+a{
+    color: black;
+}
+li:hover{
+    background-color: darkgray;
+}
+*{
+    padding: 0;
+}

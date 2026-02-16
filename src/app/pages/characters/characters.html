@@ -1,0 +1,108 @@
+<div class="row">
+    <h1>NIKKE Characters</h1>
+    <h3>List of characters available in NIKKE.</h3>
+    <h3>Last updated: 29/10/2025</h3>
+</div>
+<div>
+    <button class="btn btn-primary"
+    (click)="navigate('characters/add');">
+        ADD NEW
+    </button>
+</div>
+<div class="row">
+    <div style="width: 700px;">
+        Search bar 
+        <!-- TODO -->
+    </div>
+    <btn-group
+        style="flex: 0.4; display: inline-flex;"
+        [types]="rarityTypes"
+        [isAll]="true"
+        (newType)="info($event, 'rarityTypes')"
+    >
+    </btn-group>
+    <btn-group
+        style="flex: 0.7; display: inline-flex;"
+        [types]="elementTypes"
+        [isAll]="true"
+        [isIcon]="true"
+        (newType)="info($event, 'elementTypes')"
+    >
+    </btn-group>
+    <btn-group
+        style="flex: 0.5; display: inline-flex;"
+        [types]="rifleTypes"
+        [isAll]="true"
+        (newType)="info($event, 'rifleTypes')"
+    >
+    </btn-group>
+    <btn-group
+        style="flex: 0.8; display: inline-flex;"
+        [types]="attackTypes"
+        [isAll]="true"
+        (newType)="info($event, 'attackTypes')"
+    >
+    </btn-group>
+    <btn-group
+        style="flex: 0.8; display: inline-flex;"
+        [types]="burstTypes"
+        [isAll]="true"
+        (newType)="info($event, 'burstTypes')"
+    >
+    </btn-group>
+    <btn-group
+        style="flex: 0.8; display: inline-flex;"
+        [types]="manufacturerTypes"
+        [isAll]="true"
+        (newType)="info($event, 'manufacturerTypes')"
+    >
+    </btn-group>
+</div>
+
+<div class="row cards p-3">
+    <div class="card character-card"
+        *ngFor="let character of characters"
+        (click)="openCharacter(character.id)"
+        (mouseenter)="onMouseEnter($event, character);"
+        (mouseleave)="popupCharacter = null;"
+        >
+        <div class="image-container">
+            <img src={{character.imgUrl}}>
+        </div>
+        <!-- TODO: megcsinálni szebben Bursttype.ts-ből -->
+        <div class="burst icon-container">
+            <img *ngIf="character.burstType === 'BURST1'" src="../../assets/img/burst_bordered_icon/burst1.webp">
+            <img *ngIf="character.burstType === 'BURST2'" src="../../assets/img/burst_bordered_icon/burst2.webp">
+            <img *ngIf="character.burstType === 'BURST3'" src="../../assets/img/burst_bordered_icon/burst3.webp">
+        </div>
+        <div class="overlay text-center">{{character.name}}</div>
+        <div class="element icon-container">
+            <img *ngIf="character.elementType == 'WATER'" src="../../assets/img/element_bordered_icon/element_water.webp">
+            <img *ngIf="character.elementType == 'ELECTRIC'" src="../../assets/img/element_bordered_icon/element_water.webp">
+            <img *ngIf="character.elementType == 'WIND'" src="../../assets/img/element_bordered_icon/element_wind.webp">
+            <img *ngIf="character.elementType == 'IRON'" src="../../assets/img/element_bordered_icon/element_water.webp">
+            <img *ngIf="character.elementType == 'FIRE'" src="../../assets/img/element_bordered_icon/element_fire.webp">
+        </div>
+        <!-- <div *ngIf="mouseOnCharacter === character.id">
+            <character-minicard-details
+            [id]="'popup-'+ character.id"
+            [character]="character"
+            [parent]="hoveredElement"
+            [style.left.px]="popupLeft"
+            [style.top.px]="popupTop"
+            >
+                
+            </character-minicard-details>
+        </div> -->
+        <div
+            id="popup">
+            <character-minicard-details
+                *ngIf="character === popupCharacter"
+                [character]="popupCharacter"
+                [parent]="hoveredElement"
+                >
+            </character-minicard-details>
+        </div>
+    </div>
+    
+</div>

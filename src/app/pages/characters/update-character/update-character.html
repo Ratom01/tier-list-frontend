@@ -1,0 +1,98 @@
+<form [formGroup]="updateCharacterForm"
+    (ngSubmit)="$event.preventDefault(); updateCharacter();"
+    >
+    <div *ngIf="character"  class="mb-3 mt-3">
+        <input class="form-control" formControlName="name" type="text" required hidden value={{character.id}}>
+    </div>
+
+    <div class="mb-3 mt-3">
+        <label class="form-label">Character name: </label>
+        <input class="form-control" formControlName="name" type="text" required>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Image url: </label>
+        <input class="form-control" formControlName="imgUrl" type="text" required>
+    </div>
+    <div *ngIf="character" class="mb-3 mt-3">
+        <label class="form-label">Burst: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="burstTypes"
+            [oldType]="character?.burstType"
+            (newType)="selectType($event, 'burstType')"
+        >
+        </btn-group>
+    </div>
+    <div *ngIf="character"  class="mb-3 mt-3">
+        <label class="form-label">Element: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="true"
+            [types]="elementTypes"
+            [oldType]="character?.elementType"
+            (newType)="selectType($event, 'elementType')"
+        >
+        </btn-group>
+    </div>
+    <div *ngIf="character"  class="mb-3 mt-3">
+        <label class="form-label">Attack type: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="attackTypes"
+            [oldType]="character?.attackType"
+            (newType)="selectType($event, 'attackType')"
+        >
+        </btn-group>
+    </div>
+    <div *ngIf="character"  class="mb-3 mt-3">
+        <label class="form-label">Manufacturer: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="manufacturerTypes"
+            [oldType]="character?.manufacturerType"
+            (newType)="selectType($event, 'manufacturerType')"
+        >
+        </btn-group>
+    </div>
+    <div *ngIf="character"  class="mb-3 mt-3">
+        <label class="form-label">Rarity: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="false"
+            [types]="rarityTypes"
+            [oldType]="character?.rarityType"
+            (newType)="selectType($event, 'rarityType')"
+        >
+        </btn-group>
+    </div>
+    <div *ngIf="character"  class="mb-3 mt-3">
+        <label class="form-label">Rifle: </label>
+        <btn-group
+            style="flex: 0.8; display: inline-flex;"
+            [isAll]="false"
+            [isIcon]="true"
+            [types]="rifleTypes"
+            [oldType]="character?.rifleType"
+            (newType)="selectType($event, 'rifleType')"
+        >
+        </btn-group>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Description: </label>
+        <textarea class="form-control" formControlName="description" type="text" required>
+
+        </textarea>
+    </div>
+    <button class="btn btn-primary" [disabled]="updateCharacterForm.invalid">
+        Update
+    </button>
+
+</form>

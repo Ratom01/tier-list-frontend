@@ -1,0 +1,30 @@
+.background{
+    position: fixed;
+    z-index: 25;
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+    border: 5px solid black;
+    text-align: center;
+}
+.element, .rifle, .manufacturer, .burst{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 45px;
+    height: 45px;
+    background-color: black;
+    padding: 4px;
+    margin: 0;
+    border-bottom: white solid 2px;
+}
+img{
+    height: 80%;
+    object-fit: contain;
+    object-position: center;
+}
+.rating{
+    padding: 3px;
+    color: white;
+    
+}
