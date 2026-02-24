@@ -1,4 +1,8 @@
-# TierList
+# Tier List Frontend
+
+Angular kipróbálásához létrehozott frontend. Az egész projekt kinézete egy oldal alapján készült, ami a következő:
+https://www.prydwen.gg/nikke/tier-list/ 
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
 
