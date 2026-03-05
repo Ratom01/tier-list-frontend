@@ -1,32 +1,46 @@
 <p>tier-list works!</p>
+<div class="d-flex" style="gap: 1em; margin: 0.5em;">
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="sorting = 'story';">
+        Story
+    </div>
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="sorting = 'boss';">
+        Boss
+    </div>
+    <div class="col-3 flex-item" style="flex: 1"
+        (click)="sorting = 'pvp';">
+        PvP
+    </div>
+</div>
 <table class="table border">
     <tr class="">
         <th class="rank-head">Rank</th>
-        <th class="attacktype-head">Attacker</th>
-        <th class="attacktype-head">Defender</th>
-        <th class="attacktype-head">Supporter</th>
+        <th class="attacktype-head">Burst 1</th>
+        <th class="attacktype-head">Burst 2</th>
+        <th class="attacktype-head">Burst 3</th>
     </tr>
     <tr class="rank" *ngFor="let rank of rankTypes">
         <td [style.background-color]="rank[1][1]">{{rank[0]}}</td>
         <td>
-            <ng-container *ngFor="let c of attacker">
-               <mini-character-card *ngIf="c['story'] == rank[0]"
+            <ng-container *ngFor="let c of burst1">
+               <mini-character-card *ngIf="c[sorting] == rank[0]"
                 [ranking]="c"
                >
                 </mini-character-card> 
             </ng-container>
         </td>
         <td>
-            <ng-container *ngFor="let c of defender">
-               <mini-character-card *ngIf="c['story'] == rank[0]"
+            <ng-container *ngFor="let c of burst2">
+               <mini-character-card *ngIf="c[sorting] == rank[0]"
                 [ranking]="c"
                >
                 </mini-character-card> 
             </ng-container>
         </td>
         <td>
-            <ng-container *ngFor="let c of supporter">
-               <mini-character-card *ngIf="c['story'] == rank[0]"
+            <ng-container *ngFor="let c of burst3">
+               <mini-character-card *ngIf="c[sorting] == rank[0]"
                 [ranking]="c"
                >
                 </mini-character-card> 

@@ -6,6 +6,7 @@ import { AttackType } from '../../../assets/enums/AttackType';
 import { RankType } from '../../../assets/enums/RankType';
 import { NgForOf, NgIf } from "@angular/common";
 import { MiniCharacterCard } from './mini-character-card/mini-character-card';
+import { BurstType } from '../../../assets/enums/BurstType';
 
 @Component({
   selector: 'app-tier-list',
@@ -15,12 +16,15 @@ import { MiniCharacterCard } from './mini-character-card/mini-character-card';
   styleUrl: './tier-list.css',
 })
 export class TierList implements OnInit{
-
-  attacker : Ranking[] = [];
-  defender : Ranking[] = [];
-  supporter : Ranking[] = [];
-
+  
   rankTypes = Object.entries(RankType);
+  
+  burst1 : Ranking[] = [];
+  burst2 : Ranking[] = [];
+  burst3 : Ranking[] = [];
+  burstTypes = Object.entries(BurstType);
+
+  sorting : keyof Ranking = "story";
 
   constructor(private characterService : CharactersService, private rankingService : RankingService){}
 
@@ -29,15 +33,15 @@ export class TierList implements OnInit{
       next: data => {
         data.forEach(element => {
           //console.log(element['story'] == this.rankTypes[1][0]);
-          switch(element.character?.attackType){
-            case (AttackType.ATTACKER[1]) :
-              this.attacker.push(element);
+          switch(element.character?.burstType){
+            case (BurstType.BURST1[2]) :
+              this.burst1.push(element);
               break;
-            case (AttackType.DEFENDER[1]) : 
-              this.defender.push(element);
+            case (BurstType.BURST2[2]) : 
+              this.burst2.push(element);
               break;
-            case (AttackType.SUPPORTER[1]) : 
-              this.supporter.push(element);
+            case (BurstType.BURST3[2]) : 
+              this.burst3.push(element);
               break;
           }
         });
