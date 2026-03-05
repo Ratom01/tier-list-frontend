@@ -7,6 +7,7 @@ import { RankType } from '../../../assets/enums/RankType';
 import { NgForOf, NgIf } from "@angular/common";
 import { MiniCharacterCard } from './mini-character-card/mini-character-card';
 import { BurstType } from '../../../assets/enums/BurstType';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tier-list',
@@ -26,7 +27,7 @@ export class TierList implements OnInit{
 
   sorting : keyof Ranking = "story";
 
-  constructor(private characterService : CharactersService, private rankingService : RankingService){}
+  constructor(private characterService : CharactersService, private rankingService : RankingService, private router : Router){}
 
   ngOnInit(): void {
     this.rankingService.getAllRanking().subscribe({
@@ -51,5 +52,11 @@ export class TierList implements OnInit{
       },
       error: message => alert(message)
     })
+  }
+  helllo(){
+    console.log("heeeeello")
+  }
+  navigate(r : string){
+    this.router.navigateByUrl(r);
   }
 }

@@ -118,6 +118,11 @@
               </div>
           </div>
         </div>
+        <button class="btn btn-primary"
+          (click)="navigate(`/characters/${character?.id}/ranking/update`)"
+        >
+          Update Ranking
+        </button>
       </ng-container>
       <ng-container *ngIf="!ranking">
         <button class="btn btn-primary"

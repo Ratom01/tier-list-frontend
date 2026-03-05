@@ -13,7 +13,53 @@
         PvP
     </div>
 </div>
-<table class="table border">
+<table class="table">
+    <tr>
+        <th class="rank-head">Rank</th>
+        <th class="attacktype-head">Burst 1</th>
+        <th class="attacktype-head">Burst 2</th>
+        <th class="attacktype-head">Burst 3</th>
+    </tr>
+</table>
+<table *ngFor="let rank of rankTypes">
+    <tr>
+        <td class="rarity" [style.background-color]="rank[1][1]">{{rank[0]}}</td>
+        <td class="cell">
+            <div class="d-flex gap-1">
+                <ng-container  *ngFor="let c of burst1">
+                <mini-character-card *ngIf="c[sorting] == rank[0]"
+                    [ranking]="c"
+                    (click)="navigate(`/characters/${c.character?.id}`)"
+                >
+                    </mini-character-card> 
+                </ng-container> 
+            </div>
+        </td>
+        <td class="cell">
+            <div class="d-flex gap-1">
+                <ng-container *ngFor="let c of burst2">
+                <mini-character-card *ngIf="c[sorting] == rank[0]"
+                    [ranking]="c"
+                    (click)="navigate(`/characters/${c.character?.id}`)"
+                >
+                    </mini-character-card> 
+                </ng-container>
+            </div>
+        </td>
+        <td class="cell">
+            <div class="d-flex gap-1">
+                <ng-container *ngFor="let c of burst3">
+                <mini-character-card *ngIf="c[sorting] == rank[0]"
+                    [ranking]="c"
+                    (click)="navigate(`/characters/${c.character?.id}`)"
+                >
+                    </mini-character-card> 
+                </ng-container>
+            </div>
+        </td>
+    </tr>
+</table>
+<!-- <table>
     <tr class="">
         <th class="rank-head">Rank</th>
         <th class="attacktype-head">Burst 1</th>
@@ -30,7 +76,7 @@
                 </mini-character-card> 
             </ng-container>
         </td>
-        <td>
+        <td  class="d-flex gap-2">
             <ng-container *ngFor="let c of burst2">
                <mini-character-card *ngIf="c[sorting] == rank[0]"
                 [ranking]="c"
@@ -47,4 +93,4 @@
             </ng-container>
         </td>
     </tr>
-</table>
+</table> -->

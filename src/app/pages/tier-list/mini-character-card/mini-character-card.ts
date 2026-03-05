@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mini-character-card',
@@ -8,4 +9,10 @@ import { Component, Input } from '@angular/core';
 })
 export class MiniCharacterCard {
   @Input() ranking! : Ranking;
+
+  constructor(private router : Router){}
+
+  navigate(r : string){
+    this.router.navigateByUrl(r);
+  }
 }

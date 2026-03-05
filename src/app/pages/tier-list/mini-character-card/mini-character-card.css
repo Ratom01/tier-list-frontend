@@ -1,3 +1,7 @@
+:host {
+  display: block;
+  cursor: pointer;
+}
 .image-container{
     width: 100px;
     height: 100px;
@@ -13,10 +17,10 @@
     object-position: top;
 }
 .name{
-    font-size: 20px;
+    font-size: 14px;
     text-align: center;
     width: 100px;
-    height: 30px;
+    height: fit-content;
 }
 .background{
     width: 100px;
@@ -25,4 +29,10 @@
 }
 *{
     padding: 0;
+}
+.image-container:hover img {
+    transition: transform 0.3s ease;
+}
+.image-container:hover img {
+  transform: scale(1.1);
 }

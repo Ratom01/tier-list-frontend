@@ -1,6 +1,5 @@
-.row{
-    display: flex;
-    flex-direction: row;
+*{
+    color: white;
 }
 .flex-item{
     text-align: center;
@@ -13,20 +12,33 @@
 mini-character-card {
     padding: 0;
 }
-td{
-    border: 1px solid rgb(0, 0, 0);
+table, th, td {
+  border: 0px solid black;
+  border-collapse: collapse;
+}
+table{
+    width: 100%;
+    margin-top: 5px;
+    box-shadow: rgb(80, 80, 80, 122) 0 0 2px;
 }
 .rank-head{
-    width: 5%;
+    width: 10%;
 }
 .attacktype-head{
     width: 30%;
 }
-.rank{
+th:nth-child(even), td:nth-child(even){
+    background-color: rgb(80, 80, 80);
+}
+th:nth-child(odd), td:nth-child(odd){
+    background-color: rgb(120, 120, 120);
+}
+.rarity{
+    width: 10%;
     text-align: center;
     color: white;
 }
 .cell{
-    display: flex;
+    width: 30%;
     padding: 0.3em;
 }
